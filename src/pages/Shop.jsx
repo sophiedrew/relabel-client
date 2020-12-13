@@ -33,10 +33,10 @@ export default class Shop extends Component {
       return (
         el.name.toLowerCase().includes(this.state.search.toLowerCase()) ||
         el.size.toLowerCase().includes(this.state.search.toLowerCase()) ||
-        el.colour.toLowerCase().includes(this.state.search.toLowerCase()) ||
+        el.colour.includes(this.state.search.toLowerCase()) ||
         el.origin.toLowerCase().includes(this.state.search.toLowerCase()) ||
         el.category.toLowerCase().includes(this.state.search.toLowerCase()) ||
-        el.suitable.toLowerCase().includes(this.state.search.toLowerCase())
+        el.suitable.includes(this.state.search.toLowerCase())
       );
     });
     return (
@@ -44,6 +44,14 @@ export default class Shop extends Component {
         <div>
           <h1>SHOP</h1>
         </div>
+        <label htmlFor="search">Search</label>
+        <input
+          id="search"
+          style={{ width: "50%" }}
+          name="search"
+          value={this.state.search}
+          onChange={this.handleChange}
+        />
         <div>
           <Link to="/new-product">Add new product</Link>
         </div>
