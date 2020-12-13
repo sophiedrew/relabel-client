@@ -7,12 +7,14 @@ export default class Shop extends Component {
   state = {
     products: [],
     search: "",
+    sort: "",
     name: "",
     size: "",
     colour: [],
     origin: "",
     category: "",
     suitable: [],
+    createdAt: Date.now(),
   };
 
   componentDidMount = () => {
@@ -23,6 +25,7 @@ export default class Shop extends Component {
   };
 
   handleChange = (event) => {
+    console.log("HANDLE CHANGE ", event.target.name, ": ", event.target.value);
     this.setState({
       [event.target.name]: event.target.value,
     });
@@ -39,24 +42,45 @@ export default class Shop extends Component {
         el.suitable.includes(this.state.search.toLowerCase())
       );
     });
+
+    const filteredAndSortedProducts = filteredProducts.sort((a, b) => {
+      if (this.state.sort === "Price ↑") {
+        return a.price > b.price ? 1 : -1;
+      }
+      if (this.state.sort === "Price ↓") {
+        return a.price < b.price ? 1 : -1;
+      } else {
+        return a.createdAt < b.createdAt ? 1 : -1;
+      }
+    });
+
     return (
       <div>
         <div>
           <h1>SHOP</h1>
         </div>
-        <label htmlFor="search">Search</label>
-        <input
-          id="search"
-          style={{ width: "50%" }}
-          name="search"
-          value={this.state.search}
-          onChange={this.handleChange}
-        />
+        <div>
+          <label htmlFor="search">Search</label>
+          <input
+            id="search"
+            style={{ width: "50%" }}
+            name="search"
+            value={this.state.search}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div>
+          <select name="sort" onChange={this.handleChange}>
+            <option value="Latest">Latest</option>
+            <option value="Price ↑">Price ↑</option>
+            <option value="Price ↓">Price ↓</option>
+          </select>
+        </div>
         <div>
           <Link to="/new-product">Add new product</Link>
         </div>
         <div>
-          {filteredProducts.map((el, i) => (
+          {filteredAndSortedProducts.map((el, i) => (
             <Product key={el._id} {...el} />
           ))}
         </div>
