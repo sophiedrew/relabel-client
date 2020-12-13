@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { login } from "../services/auth";
+import { Link } from "react-router-dom";
 import "./Signup";
 
 export default class Login extends Component {
   state = {
-    username: "",
+    email: "",
     password: "",
     error: null,
   };
@@ -20,7 +21,7 @@ export default class Login extends Component {
     event.preventDefault();
 
     const credentials = {
-      username: this.state.username,
+      email: this.state.email,
       password: this.state.password,
     };
     login(credentials).then((res) => {
@@ -36,15 +37,15 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        <h1>Log In</h1>
+        <h1>LOGIN</h1>
         <form onSubmit={this.handleFormSubmission} className="signup__form">
-          <label htmlFor="input-username">Username</label>
+          <label htmlFor="input-email">E-Mail</label>
           <input
-            id="input-username"
+            id="input-email"
             type="text"
-            name="username"
-            placeholder="username"
-            value={this.state.username}
+            name="email"
+            placeholder="email@email.com"
+            value={this.state.email}
             onChange={this.handleInputChange}
             required
           />
@@ -72,6 +73,12 @@ export default class Login extends Component {
             Submit
           </button>
         </form>
+        <div>
+          <p>or</p>
+          <Link to="/auth/signup" className="authLink">
+            Signup now
+          </Link>
+        </div>
       </div>
     );
   }

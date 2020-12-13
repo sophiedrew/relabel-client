@@ -3,13 +3,30 @@ nav {
   padding: 1em;
   justify-content: space-around;
   flex-wrap: wrap;
-  background: #282c34;
+  background: black;
   font-weight: 600;
 }
+.div_nav__logo {
+  width: 20%;
+}
 
-.nav__projectName {
+.div_nav__icons {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-logo {
   color: #e4f9ff;
   text-decoration: none;
+  height: 50px;
+}
+
+.nav-icon {
+  width: 50px;
+  height: 50px;
 }
 
 .authLink {

@@ -3,6 +3,7 @@ import { Switch } from "react-router-dom";
 import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
+import Donate from "./pages/Donate";
 import LogIn from "./pages/LogIn";
 import ProtectedPage from "./pages/ProtectedPage";
 import Signup from "./pages/Signup";
@@ -10,6 +11,10 @@ import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/auth";
 import * as PATHS from "./utils/paths";
+import Profile from "./pages/Profile";
+import UpdateProfile from "./pages/UpdateProfile.jsx";
+import Shop from "./pages/Shop";
+import NewProduct from "./pages/NewProduct";
 
 class App extends React.Component {
   state = {
@@ -81,9 +86,16 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
           <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
+          <NormalRoute exact path={PATHS.DONATE} component={Donate} />
+          <NormalRoute exact path={PATHS.SHOP} component={Shop} />
+          <ProtectedRoute
+            exact
+            path={PATHS.NEWPRODUCT}
+            component={NewProduct}
+            user={this.state.user}
+          />
           <NormalRoute
             exact
             path={PATHS.SIGNUPPAGE}
@@ -102,7 +114,22 @@ class App extends React.Component {
             component={ProtectedPage}
             user={this.state.user}
           />
+          <ProtectedRoute
+            exact
+            path={PATHS.UPDATEPROFILE}
+            component={UpdateProfile}
+            user={this.state.user}
+            handleLogout={this.handleLogout}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROFILE}
+            component={Profile}
+            user={this.state.user}
+            handleLogout={this.handleLogout}
+          />
         </Switch>
+        <Navbar user={this.state.user} />
       </div>
     );
   }
