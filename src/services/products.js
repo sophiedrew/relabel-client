@@ -39,3 +39,7 @@ export function addNewProduct(product) {
     .then(successStatus)
     .catch(internalServerError);
 }
+
+export function getAllProducts() {
+  return productService.get("/all-products").then((res) => res.data);
+}
