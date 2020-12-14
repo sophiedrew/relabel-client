@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { getSingleProduct } from "../services/products";
-import { Link } from "react-router-dom";
 
 export default class SingleProductPage extends Component {
   state = {
@@ -16,7 +15,7 @@ export default class SingleProductPage extends Component {
     refurbed: "",
     category: "",
     image: "",
-    numberOfProducts: 0,
+    numberOfProducts: 1,
     quantity: 0,
     id: "",
   };
@@ -55,7 +54,7 @@ export default class SingleProductPage extends Component {
     });
   }
 
-  render() {
+  saveDataToLocalStorage() {
     const productForCart = {
       image: this.state.image,
       itemNo: this.state.itemNo,
@@ -73,6 +72,19 @@ export default class SingleProductPage extends Component {
       id: this.state.id,
       numberOfProducts: this.state.numberOfProducts,
     };
+    console.log(productForCart);
+    const allCurrentProducts = JSON.parse(localStorage.getItem("products"));
+    if (!allCurrentProducts) {
+      return localStorage.setItem("products", JSON.stringify([productForCart]));
+    }
+    return localStorage.setItem(
+      "products",
+      JSON.stringify([...allCurrentProducts, productForCart]),
+      this.props.history.push("/cart")
+    );
+  }
+
+  render() {
     if (!this.state) {
       return <div>Loading...</div>;
     }
@@ -102,11 +114,9 @@ export default class SingleProductPage extends Component {
             <button onClick={(e) => this.handleChangeIncrement(e)}>-</button>
             <button onClick={(e) => this.handleChangeDecrement(e)}>+</button>
             <h1>{this.state.numberOfProducts}</h1>
-            <Link to="/cart" product={productForCart}>
-              <button>
-                <p>ADD TO CART</p>
-              </button>
-            </Link>
+            <button onClick={() => this.saveDataToLocalStorage()}>
+              <p>ADD TO CART(add to local storage)</p>
+            </button>
           </div>
         </div>
         <div>
