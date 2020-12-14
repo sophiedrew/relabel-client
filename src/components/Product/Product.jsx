@@ -5,7 +5,10 @@ const Product = (props) => {
   console.log("props each filtered Products:", props);
   return (
     <div>
-      <Link to={`/product/${props._id}`}>
+      <Link
+        to={`/product/${props._id}`}
+        style={{ color: "black", textDecoration: "none" }}
+      >
         <img
           src={props.image}
           alt="product"

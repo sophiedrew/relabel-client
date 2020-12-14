@@ -10,10 +10,10 @@ export default class Shop extends Component {
     sort: "",
     name: "",
     size: "",
-    colour: [],
+    colour: "",
     origin: "",
     category: "",
-    suitable: [],
+    suitable: "",
     createdAt: Date.now(),
   };
 

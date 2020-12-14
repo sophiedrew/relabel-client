@@ -12,13 +12,13 @@ export default class NewProduct extends Component {
     quantity: 0,
     price: 0,
     size: "",
-    colour: [],
+    colour: "",
     material: "",
     brand: "",
     origin: "",
     refurbed: "",
     category: "",
-    suitable: [],
+    suitable: "",
   };
 
   handleSubmit = (event) => {

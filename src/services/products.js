@@ -43,3 +43,7 @@ export function addNewProduct(product) {
 export function getAllProducts() {
   return productService.get("/all-products").then((res) => res.data);
 }
+
+export function getSingleProduct(id) {
+  return productService.get(`/${id}`).then((res) => res.data);
+}

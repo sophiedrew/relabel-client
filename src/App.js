@@ -15,6 +15,8 @@ import Profile from "./pages/Profile";
 import UpdateProfile from "./pages/UpdateProfile.jsx";
 import Shop from "./pages/Shop";
 import NewProduct from "./pages/NewProduct";
+import SingleProductPage from "./pages/SingleProductPage";
+import Cart from "./pages/Cart";
 
 class App extends React.Component {
   state = {
@@ -90,6 +92,12 @@ class App extends React.Component {
           <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
           <NormalRoute exact path={PATHS.DONATE} component={Donate} />
           <NormalRoute exact path={PATHS.SHOP} component={Shop} />
+          <NormalRoute
+            exact
+            path={PATHS.SINGLEPRODUCT}
+            component={SingleProductPage}
+          />
+          <NormalRoute exact path={PATHS.CART} component={Cart} />
           <ProtectedRoute
             exact
             path={PATHS.NEWPRODUCT}

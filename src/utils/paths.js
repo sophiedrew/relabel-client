@@ -7,3 +7,5 @@ export const PROFILE = "/profile/:id";
 export const UPDATEPROFILE = "/update/:id";
 export const SHOP = "/shop";
 export const NEWPRODUCT = "/new-product";
+export const SINGLEPRODUCT = "/product/:id";
+export const CART = "/cart";
