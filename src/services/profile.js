@@ -35,19 +35,6 @@ export function updateUser(id, info) {
     })
     .catch(internalServerError);
 }
-
-export function getReceipts(id) {
-  return profileService
-    .get("/receipts", id, {
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    })
-    .then((response) => {
-      return {
-        status: true,
-        data: response.data,
-      };
-    })
-    .catch(internalServerError);
+export function getUser(id) {
+  return profileService.get(`/${id}`).then((res) => res.data);
 }

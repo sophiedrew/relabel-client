@@ -10,8 +10,8 @@ export default function CheckoutForm(props) {
   const stripe = useStripe();
   const elements = useElements();
   useEffect(() => {
-    console.log("Products in CheckoutForm: ", props);
-    console.log("Products in CheckoutForm: ", props.products);
+    //console.log("Products in CheckoutForm: ", props);
+    //console.log("Products in CheckoutForm: ", props.products);
     // Create PaymentIntent as soon as the page loads
     axios
       .post(
@@ -88,7 +88,7 @@ export default function CheckoutForm(props) {
       setSucceeded(true);
       setTimeout(() => {
         localStorage.removeItem("products");
-        props.history.push("/shop");
+        props.history.push(`/profile/${props.user.id}`);
       }, 1000);
     }
   };

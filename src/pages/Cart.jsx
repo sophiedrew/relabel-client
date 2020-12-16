@@ -10,7 +10,7 @@ export default class Cart extends Component {
     const productsFromLocalStorage = JSON.parse(
       localStorage.getItem("products")
     );
-    console.log("From Local Storage", productsFromLocalStorage);
+    //console.log("From Local Storage", productsFromLocalStorage);
     this.setState({ products: productsFromLocalStorage });
   };
 
@@ -33,7 +33,7 @@ export default class Cart extends Component {
   };
 
   render() {
-    console.log("PRODUCTS IN STATE", this.state.products);
+    //console.log("PRODUCTS IN STATE", this.state.products);
     return (
       <div>
         <div>

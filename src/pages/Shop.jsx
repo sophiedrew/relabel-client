@@ -19,7 +19,7 @@ export default class Shop extends Component {
 
   componentDidMount = () => {
     getAllProducts().then((responseBack) => {
-      console.log("responseBack all products:", responseBack);
+      //console.log("responseBack all products:", responseBack);
       this.setState({ products: responseBack });
     });
   };
@@ -77,7 +77,9 @@ export default class Shop extends Component {
           </select>
         </div>
         <div>
-          <Link to="/new-product">Add new product</Link>
+          {this.props.user && this.props.user.userType === "admin" && (
+            <Link to="/new-product">Add new product</Link>
+          )}
         </div>
         <div>
           {filteredAndSortedProducts.map((el, i) => (

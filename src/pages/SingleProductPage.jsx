@@ -73,7 +73,7 @@ export default class SingleProductPage extends Component {
       id: this.state.id,
       //numberOfProducts: this.state.numberOfProducts,
     };
-    console.log(productForCart);
+    //console.log(productForCart);
     const allCurrentProducts = JSON.parse(localStorage.getItem("products"));
     if (!allCurrentProducts) {
       return localStorage.setItem(
@@ -144,11 +144,16 @@ export default class SingleProductPage extends Component {
           <p>Suitable for: {this.state.suitable}</p>
         </div>
         <div>
-          {/* {props.user && props.user.admin && ()} */}
-          <Link to={`edit/${this.state.id}`}>EDIT</Link>
-          <button onClick={() => this.handleDelete(this.state.id)}>
-            <p>DELETE</p>
-          </button>
+          {this.props.user && this.props.user.userType === "admin" && (
+            <Link to={`edit/${this.state.id}`}>EDIT</Link>
+          )}
+        </div>
+        <div>
+          {this.props.user && this.props.user.userType === "admin" && (
+            <button onClick={() => this.handleDelete(this.state.id)}>
+              <p>DELETE</p>
+            </button>
+          )}
         </div>
       </div>
     );
