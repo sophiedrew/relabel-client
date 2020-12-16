@@ -47,3 +47,19 @@ export function getAllProducts() {
 export function getSingleProduct(id) {
   return productService.get(`/${id}`).then((res) => res.data);
 }
+
+export function deleteSingleProduct(id) {
+  return productService.delete(`/${id}`).then((res) => res.data);
+}
+
+export function updateSingleProduct(id, info) {
+  return productService
+    .put(`/edit/${id}`, info)
+    .then((response) => {
+      return {
+        status: true,
+        data: response.data,
+      };
+    })
+    .catch(internalServerError);
+}

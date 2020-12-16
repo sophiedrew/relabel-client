@@ -15,7 +15,21 @@ export default class Cart extends Component {
   };
 
   totalPrice = (products) => {
-    return products.reduce((a, c) => a + c.numberOfProducts * c.price, 0.0);
+    return products.reduce(
+      (a, c) => a + /* c.numberOfProducts * */ c.price,
+      0.0
+    );
+  };
+
+  handleDelete = (id) => {
+    const allCurrentProducts = JSON.parse(localStorage.getItem("products"));
+    const updatedProducts = allCurrentProducts.filter((el) => el.id !== id);
+    return localStorage.setItem(
+      "products",
+      JSON.stringify(updatedProducts),
+      /* this.props.history.push("/cart") */
+      window.location.reload()
+    );
   };
 
   render() {
@@ -28,9 +42,9 @@ export default class Cart extends Component {
         <div>
           <table style={{ width: "300px" }}>
             <tbody>
-              {this.state.products.map((el) => (
+              {this.state.products.map((el, i) => (
                 <>
-                  <tr>
+                  <tr key={i}>
                     <td style={{ textAlign: "left" }}>Product</td>
                     <td style={{ textAlign: "right" }}>{el.name}</td>
                   </tr>
@@ -41,17 +55,24 @@ export default class Cart extends Component {
                     </td>
                   </tr>
                   <tr>
+                    <td style={{ textAlign: "center" }}>
+                      <button onClick={() => this.handleDelete(el.id)}>
+                        <p>Remove</p>
+                      </button>
+                    </td>
+                  </tr>
+                  {/* <tr>
                     <td style={{ textAlign: "left" }}>Quantity</td>
                     <td style={{ textAlign: "right" }}>
                       {el.numberOfProducts}
                     </td>
-                  </tr>
-                  <tr>
+                  </tr> */}
+                  {/* <tr>
                     <td style={{ textAlign: "left" }}>Subtotal</td>
                     <td style={{ textAlign: "right" }}>
                       €{(el.price * 0.01 * el.numberOfProducts).toFixed(2)}
                     </td>
-                  </tr>
+                  </tr> */}
                 </>
               ))}
               <tr>

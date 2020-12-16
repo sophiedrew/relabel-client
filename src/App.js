@@ -12,12 +12,13 @@ import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/auth";
 import * as PATHS from "./utils/paths";
 import Profile from "./pages/Profile";
-/* import UpdateProfile from "./pages/UpdateProfile.jsx"; */
+import UpdateProfile from "./pages/UpdateProfile.jsx";
 import Shop from "./pages/Shop";
 import NewProduct from "./pages/NewProduct";
 import SingleProductPage from "./pages/SingleProductPage";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import EditProduct from "./pages/EditProduct";
 
 class App extends React.Component {
   state = {
@@ -98,6 +99,7 @@ class App extends React.Component {
             path={PATHS.SINGLEPRODUCT}
             component={SingleProductPage}
           />
+          <NormalRoute exact path={PATHS.EDITPRODUCT} component={EditProduct} />
           <NormalRoute exact path={PATHS.CART} component={Cart} />
           <ProtectedRoute
             exact
@@ -129,13 +131,14 @@ class App extends React.Component {
             component={ProtectedPage}
             user={this.state.user}
           />
-          {/*           <ProtectedRoute
-            exact
-            path={PATHS.UPDATEPROFILE}
-            component={UpdateProfile}
-            user={this.state.user}
-            handleLogout={this.handleLogout}
-          /> */}
+          {
+            <ProtectedRoute
+              exact
+              path={PATHS.UPDATEPROFILE}
+              component={UpdateProfile}
+              user={this.state.user}
+            />
+          }
           <ProtectedRoute
             exact
             path={PATHS.PROFILE}

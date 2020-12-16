@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { addNewReceipt } from "../services/checkout";
+import Stripe from "../components/Stripe/Stripe";
 
 export default class Checkout extends Component {
   state = {
@@ -39,7 +40,7 @@ export default class Checkout extends Component {
   };
 
   totalPrice = (products) => {
-    return products.reduce((a, c) => a + c.numberOfProducts * c.price, 0.0);
+    return products.reduce((a, c) => a + c.price, 0.0);
   };
   render() {
     const {
@@ -84,11 +85,11 @@ export default class Checkout extends Component {
                   <>
                     <tr>
                       <td style={{ textAlign: "left" }}>{el.name}</td>
-                      <td style={{ textAlign: "center" }}>
+                      {/* <td style={{ textAlign: "center" }}>
                         x{el.numberOfProducts}
-                      </td>
+                      </td> */}
                       <td style={{ textAlign: "right" }}>
-                        €{(el.price * 0.01 * el.numberOfProducts).toFixed(2)}
+                        €{(el.price * 0.01).toFixed(2)}
                       </td>
                     </tr>
                   </>
@@ -101,7 +102,7 @@ export default class Checkout extends Component {
                 </tr>
               </tbody>
             </table>
-            <form onSubmit={this.handleSubmit}>
+            {/* <form onSubmit={this.handleSubmit}>
               <label htmlFor="total">Total</label>
               <input
                 readOnly
@@ -112,7 +113,14 @@ export default class Checkout extends Component {
                 placeholder="Image URL/path"
               />
               <button type="submit">CHECKOUT</button>
-            </form>
+            </form> */}
+          </div>
+          <div>
+            <Stripe
+              products={this.state.products}
+              user={this.props.user}
+              history={this.props.history}
+            />
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ export default class Login extends Component {
     };
     login(credentials).then((res) => {
       if (!res.status) {
-        // handle not great request
+        return this.setState({ error: res.errorMessage });
       }
       localStorage.setItem("accessToken", res.data.accessToken);
       this.props.authenticate(res.data.user);
@@ -38,6 +38,7 @@ export default class Login extends Component {
     return (
       <div>
         <h1>LOGIN</h1>
+        {this.state.error && <h4>{this.state.error}</h4>}
         <form onSubmit={this.handleFormSubmission} className="signup__form">
           <label htmlFor="input-email">E-Mail</label>
           <input

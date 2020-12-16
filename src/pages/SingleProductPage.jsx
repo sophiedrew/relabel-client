@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { getSingleProduct } from "../services/products";
+import { getSingleProduct, deleteSingleProduct } from "../services/products";
+import { Link } from "react-router-dom";
 
 export default class SingleProductPage extends Component {
   state = {
@@ -15,14 +16,14 @@ export default class SingleProductPage extends Component {
     refurbed: "",
     category: "",
     image: "",
-    numberOfProducts: 1,
+    //numberOfProducts: 1,
     quantity: 0,
     id: "",
   };
 
   componentDidMount = () => {
     getSingleProduct(this.props.match.params.id).then((res) => {
-      console.log("responseBack single product:", res);
+      //console.log("responseBack single product:", res);
       this.setState({
         image: res.image,
         itemNo: res.itemNo,
@@ -42,7 +43,7 @@ export default class SingleProductPage extends Component {
     });
   };
 
-  handleChangeIncrement() {
+  /*   handleChangeIncrement() {
     this.setState({
       numberOfProducts: this.state.numberOfProducts - 1,
     });
@@ -52,7 +53,7 @@ export default class SingleProductPage extends Component {
     this.setState({
       numberOfProducts: this.state.numberOfProducts + 1,
     });
-  }
+  } */
 
   saveDataToLocalStorage() {
     const productForCart = {
@@ -70,12 +71,16 @@ export default class SingleProductPage extends Component {
       category: this.state.category,
       suitable: this.state.suitable,
       id: this.state.id,
-      numberOfProducts: this.state.numberOfProducts,
+      //numberOfProducts: this.state.numberOfProducts,
     };
     console.log(productForCart);
     const allCurrentProducts = JSON.parse(localStorage.getItem("products"));
     if (!allCurrentProducts) {
-      return localStorage.setItem("products", JSON.stringify([productForCart]));
+      return localStorage.setItem(
+        "products",
+        JSON.stringify([productForCart]),
+        this.props.history.push("/cart")
+      );
     }
     return localStorage.setItem(
       "products",
@@ -83,6 +88,18 @@ export default class SingleProductPage extends Component {
       this.props.history.push("/cart")
     );
   }
+
+  handleDelete = (id) => {
+    deleteSingleProduct(id).then((res) => {
+      if (!res.status) {
+        //  deal with the error
+        return;
+      }
+      console.log("deleted Product:", res);
+      this.props.history.push("/shop");
+      //  was successful
+    });
+  };
 
   render() {
     if (!this.state) {
@@ -111,9 +128,9 @@ export default class SingleProductPage extends Component {
             <p>Colour(s): {this.state.colour}</p>
           </div>
           <div>
-            <button onClick={(e) => this.handleChangeIncrement(e)}>-</button>
+            {/* <button onClick={(e) => this.handleChangeIncrement(e)}>-</button>
             <button onClick={(e) => this.handleChangeDecrement(e)}>+</button>
-            <h1>{this.state.numberOfProducts}</h1>
+            <h1>{this.state.numberOfProducts}</h1> */}
             <button onClick={() => this.saveDataToLocalStorage()}>
               <p>ADD TO CART(add to local storage)</p>
             </button>
@@ -125,6 +142,13 @@ export default class SingleProductPage extends Component {
           <p>Brand: {this.state.brand}</p>
           <p>Material: {this.state.material}</p>
           <p>Suitable for: {this.state.suitable}</p>
+        </div>
+        <div>
+          {/* {props.user && props.user.admin && ()} */}
+          <Link to={`edit/${this.state.id}`}>EDIT</Link>
+          <button onClick={() => this.handleDelete(this.state.id)}>
+            <p>DELETE</p>
+          </button>
         </div>
       </div>
     );
