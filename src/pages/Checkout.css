@@ -1,0 +1,50 @@
+.btn-update {
+  color: #bbbbbb;
+  font-size: small;
+  font-weight: 900;
+  height: auto;
+  background-color: white;
+  border-color: #bbbbbb;
+  margin: 10px 10px 10px 0;
+  width: 100px;
+  text-align: center;
+  padding: 0;
+}
+
+.btn-update p {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 0;
+  padding: 0;
+  font-size: 10px;
+  text-align: center;
+  font-weight: 700;
+  color: #bbbbbb;
+}
+
+.shipping-adress {
+  width: 300px;
+}
+.shipping {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-total {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-total h5 {
+  margin: 15px;
+}
+
+.order-overview {
+  width: 300px;
+  text-align: left;
+}

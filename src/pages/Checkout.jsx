@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 //import { addNewReceipt } from "../services/checkout";
 import Stripe from "../components/Stripe/Stripe";
+import "../App.css";
+import "./Checkout.css";
 
 export default class Checkout extends Component {
   state = {
@@ -55,27 +57,25 @@ export default class Checkout extends Component {
     } = this.props.user;
     return (
       <div>
-        <div>
-          <h1>CHECKOUT</h1>
+        <div className="App-Inner-Header">
+          <h2>CHECKOUT</h2>
         </div>
-        <div>
-          <div style={{ textAlign: "left" }}>
-            <h2>SHIPPING ADDRESS</h2>
+        <div className="App-content">
+          <div className="shipping-adress" style={{ textAlign: "left" }}>
+            <h3>SHIPPING ADDRESS</h3>
             <p>E-Mail: {email}</p>
             <p>
               {firstName} {lastName}
-            </p>
-            <p>
-              {street} {houseNo}, {postalCode} {city}
+              <br /> {street} {houseNo} <br /> {postalCode} {city}
             </p>
             <Link to={`/profile/${_id}`}>
-              <button>
-                <p>UPDATE PROFILE</p>
+              <button className="btn-update">
+                <p>UPDATE</p>
               </button>
             </Link>
           </div>
-          <div>
-            <h2>ORDER OVERVIEW</h2>
+          <div className="order-overview">
+            <h3>ORDER OVERVIEW</h3>
           </div>
           <div></div>
           <div>
@@ -89,19 +89,24 @@ export default class Checkout extends Component {
                         x{el.numberOfProducts}
                       </td> */}
                       <td style={{ textAlign: "right" }}>
-                        €{(el.price * 0.01).toFixed(2)}
+                        € {(el.price * 0.01).toFixed(2)}
                       </td>
                     </tr>
                   </>
                 ))}
-                <tr>
-                  <td style={{ textAlign: "left" }}>Total</td>
-                  <td style={{ textAlign: "right" }}>
-                    €{(this.totalPrice(this.state.products) * 0.01).toFixed(2)}
-                  </td>
-                </tr>
               </tbody>
             </table>
+            <div className="shipping">
+              <p>Shipping</p>
+              <p>free</p>
+            </div>
+
+            <div className="order-total">
+              <h5>Total</h5>
+              <h5>
+                € {(this.totalPrice(this.state.products) * 0.01).toFixed(2)}
+              </h5>
+            </div>
             {/* <form onSubmit={this.handleSubmit}>
               <label htmlFor="total">Total</label>
               <input

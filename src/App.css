@@ -60,6 +60,19 @@
   padding: 0;
 }
 
+.btn-admin {
+  color: white;
+  font-size: small;
+  font-weight: 900;
+  height: auto;
+  background-color: #f34949;
+  border: none;
+  margin: 10px 10px 10px 0;
+  width: 100px;
+  text-align: center;
+  padding: 0;
+}
+
 h1 {
   font-size: 40px;
   color: #1b1b1b;
@@ -67,10 +80,12 @@ h1 {
 
 h2 {
   font-size: 1rem;
+  color: #1b1b1b;
 }
 
 h3 {
   font-size: 1rem;
+  color: #1b1b1b;
 }
 
 p {
@@ -88,6 +103,13 @@ input {
   height: 20px;
   margin: 0;
   padding: 0;
+}
+table {
+  margin-top: 1px;
+}
+
+td {
+  font-size: 12px;
 }
 
 .text-boxes {

@@ -89,7 +89,7 @@ export default function CheckoutForm(props) {
       setTimeout(() => {
         localStorage.removeItem("products");
         props.history.push(`/profile/${props.user.id}`);
-      }, 1000);
+      }, 2000);
     }
   };
   return (
@@ -112,12 +112,8 @@ export default function CheckoutForm(props) {
       )}
       {/* Show a success message upon completion */}
       <p className={succeeded ? "result-message" : "result-message hidden"}>
-        Payment succeeded, see the result in your
-        <a href={`https://dashboard.stripe.com/test/payments`}>
-          {" "}
-          Stripe dashboard.
-        </a>{" "}
-        Refresh the page to pay again.
+        Payment succeeded. You will now be redirected to your profile where you
+        can see the receipt.
       </p>
     </form>
   );

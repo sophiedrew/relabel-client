@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "../App.css";
+import "./Cart.css";
 
 export default class Cart extends Component {
   state = {
@@ -50,14 +52,24 @@ export default class Cart extends Component {
     }
     return (
       <div>
-        <div>
-          <h1>CART</h1>
+        <div className="App-Inner-Header">
+          <h2>CART</h2>
         </div>
-        <div>
+        <div className="App-content">
           <table style={{ width: "300px" }}>
             <tbody>
               {this.state.products.map((el, i) => (
                 <>
+                  <tr>
+                    <td style={{ textAlign: "left" }}>
+                      <button
+                        className="btn-remove"
+                        onClick={() => this.handleDelete(el.id)}
+                      >
+                        <p>X</p>
+                      </button>
+                    </td>
+                  </tr>
                   <tr key={i}>
                     <td style={{ textAlign: "left" }}>Product</td>
                     <td style={{ textAlign: "right" }}>{el.name}</td>
@@ -68,13 +80,7 @@ export default class Cart extends Component {
                       € {(el.price * 0.01).toFixed(2)}
                     </td>
                   </tr>
-                  <tr>
-                    <td style={{ textAlign: "center" }}>
-                      <button onClick={() => this.handleDelete(el.id)}>
-                        <p>Remove</p>
-                      </button>
-                    </td>
-                  </tr>
+
                   {/* <tr>
                     <td style={{ textAlign: "left" }}>Quantity</td>
                     <td style={{ textAlign: "right" }}>
@@ -89,26 +95,27 @@ export default class Cart extends Component {
                   </tr> */}
                 </>
               ))}
-              <tr>
-                <td style={{ textAlign: "left" }}>Total</td>
-                <td style={{ textAlign: "right" }}>
-                  €{(this.totalPrice(this.state.products) * 0.01).toFixed(2)}
-                </td>
-              </tr>
             </tbody>
           </table>
-        </div>
-        <div>
-          <Link to="/shop">
-            <button>
-              <p>SHOP MORE</p>
-            </button>
-          </Link>
-          <Link to="/checkout">
-            <button>
-              <p>CHECKOUT</p>
-            </button>
-          </Link>
+          <div className="cart-total">
+            <h5>Total</h5>
+            <h5>
+              € {(this.totalPrice(this.state.products) * 0.01).toFixed(2)}
+            </h5>
+          </div>
+
+          <div>
+            <Link to="/shop">
+              <button className="btn">
+                <p>SHOP MORE</p>
+              </button>
+            </Link>
+            <Link to="/checkout">
+              <button className="btn">
+                <p>CHECKOUT</p>
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     );
