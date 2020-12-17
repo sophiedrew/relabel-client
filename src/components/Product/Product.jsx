@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Product = (props) => {
-  console.log("props each filtered Products:", props);
+  //console.log("props each filtered Products:", props);
   return (
     <div>
       <Link

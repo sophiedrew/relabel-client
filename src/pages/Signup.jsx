@@ -12,10 +12,7 @@ export default class Signup extends Component {
     houseNo: "",
     postalCode: "",
     city: "",
-    creditCardNo: "",
-    creditCardExpMonth: "",
-    creditCardExpYear: "",
-    creditCardCVC: "",
+    userType: "customer",
 
     error: null,
   };
@@ -38,10 +35,7 @@ export default class Signup extends Component {
       houseNo: this.state.houseNo,
       postalCode: this.state.postalCode,
       city: this.state.city,
-      creditCardNo: this.state.creditCardNo,
-      creditCardExpMonth: this.state.creditCardExpMont,
-      creditCardExpYear: this.state.creditCardExpYear,
-      creditCardCVC: this.state.creditCardCVC,
+      userType: this.state.userType,
     };
     signup(credentials).then((res) => {
       // successful signup
@@ -149,7 +143,17 @@ export default class Signup extends Component {
             required
           />
 
-          <label htmlFor="input-creditCardNo">Credit Card Number</label>
+          {/*           <label htmlFor="input-userType">Type</label>
+          <input
+            id="input-userType"
+            type="userType"
+            name="userType"
+            placeholder="Customer"
+            value={this.state.userType}
+            onChange={this.handleInputChange}
+          /> */}
+
+          {/*           <label htmlFor="input-creditCardNo">Credit Card Number</label>
           <input
             id="input-creditCardNo"
             type="creditCardNo"
@@ -157,37 +161,7 @@ export default class Signup extends Component {
             placeholder="XXXX XXXX XXXX XXXX"
             value={this.state.creditCardNo}
             onChange={this.handleInputChange}
-          />
-
-          <label htmlFor="input-creditCardMonth">Expiry Month</label>
-          <input
-            id="input-creditCardMonth"
-            type="creditCardMonth"
-            name="creditCardMonth"
-            placeholder="12"
-            value={this.state.creditCardMonth}
-            onChange={this.handleInputChange}
-          />
-
-          <label htmlFor="input-creditCardYear">Expiry Year</label>
-          <input
-            id="input-creditCardYear"
-            type="creditCardYear"
-            name="creditCardYear"
-            placeholder="22"
-            value={this.state.creditCardYear}
-            onChange={this.handleInputChange}
-          />
-
-          <label htmlFor="input-creditCardCVC">CVC</label>
-          <input
-            id="input-creditCardCVC"
-            type="creditCardCVC"
-            name="creditCardCVC"
-            placeholder="123"
-            value={this.state.creditCardCVC}
-            onChange={this.handleInputChange}
-          />
+          /> */}
 
           {this.state.error && (
             <div className="error-block">

@@ -104,7 +104,7 @@ export default class UpdateProfile extends Component {
               required
             />
 
-            <label htmlFor="input-creditCardNo">Credit Card Number</label>
+            {/* <label htmlFor="input-creditCardNo">Credit Card Number</label>
             <input
               id="input-creditCardNo"
               type="creditCardNo"
@@ -138,7 +138,7 @@ export default class UpdateProfile extends Component {
               name="creditCardCVC"
               value={this.state.user.creditCardCVC}
               onChange={this.handleInputChange}
-            />
+            /> */}
 
             {this.state.error && (
               <div className="error-block">

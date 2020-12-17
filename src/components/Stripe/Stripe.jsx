@@ -8,7 +8,7 @@ import "./Stripe.css";
 // loadStripe is initialized with your real test publishable API key.
 const promise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 export default function App(props) {
-  console.log("Products in Stripe Component: ", props);
+  //console.log("Products in Stripe Component: ", props);
   return (
     <div className="App">
       <Elements stripe={promise}>

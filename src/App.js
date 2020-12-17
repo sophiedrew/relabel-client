@@ -19,6 +19,7 @@ import SingleProductPage from "./pages/SingleProductPage";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import EditProduct from "./pages/EditProduct";
+import ReceiptDetails from "./pages/ReceiptDetails";
 
 class App extends React.Component {
   state = {
@@ -93,11 +94,17 @@ class App extends React.Component {
         <Switch>
           <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
           <NormalRoute exact path={PATHS.DONATE} component={Donate} />
-          <NormalRoute exact path={PATHS.SHOP} component={Shop} />
+          <NormalRoute
+            exact
+            path={PATHS.SHOP}
+            component={Shop}
+            user={this.state.user}
+          />
           <NormalRoute
             exact
             path={PATHS.SINGLEPRODUCT}
             component={SingleProductPage}
+            user={this.state.user}
           />
           <NormalRoute exact path={PATHS.EDITPRODUCT} component={EditProduct} />
           <NormalRoute exact path={PATHS.CART} component={Cart} />
@@ -145,6 +152,12 @@ class App extends React.Component {
             component={Profile}
             user={this.state.user}
             handleLogout={this.handleLogout}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.RECEIPT}
+            component={ReceiptDetails}
+            user={this.state.user}
           />
         </Switch>
         <Navbar user={this.state.user} />

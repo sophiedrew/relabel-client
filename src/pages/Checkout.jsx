@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { addNewReceipt } from "../services/checkout";
+//import { addNewReceipt } from "../services/checkout";
 import Stripe from "../components/Stripe/Stripe";
 
 export default class Checkout extends Component {
@@ -22,7 +22,7 @@ export default class Checkout extends Component {
     });
   };
 
-  handleSubmit = (event) => {
+  /* handleSubmit = (event) => {
     event.preventDefault();
     const productsAndDate = {
       products: this.state.products,
@@ -37,7 +37,7 @@ export default class Checkout extends Component {
       }
       this.props.history.push("/shop");
     });
-  };
+  }; */
 
   totalPrice = (products) => {
     return products.reduce((a, c) => a + c.price, 0.0);

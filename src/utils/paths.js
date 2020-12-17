@@ -11,3 +11,4 @@ export const SINGLEPRODUCT = "/product/:id";
 export const CART = "/cart";
 export const CHECKOUT = "/checkout";
 export const EDITPRODUCT = "/product/edit/:id";
+export const RECEIPT = "/receipt/:id";
