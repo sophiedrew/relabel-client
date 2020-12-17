@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { getSingleProduct, deleteSingleProduct } from "../services/products";
 import { Link } from "react-router-dom";
+import "../App.css";
+import "./SingleProduct.css";
 
 export default class SingleProductPage extends Component {
   state = {
@@ -107,53 +109,62 @@ export default class SingleProductPage extends Component {
     }
     return (
       <div>
-        <div>
-          <h1>PRODUCT</h1>
+        <div className="App-Inner-Header">
+          <h2>PRODUCT</h2>
         </div>
-        <div>
-          <img
-            src={this.state.image}
-            alt="product"
-            style={{ width: "300px", height: "400px" }}
-          ></img>
-        </div>
-        <div>
-          <h2>{this.state.name}</h2>
-          <p>{this.state.itemNo}</p>
-        </div>
-        <div>
-          <div>
-            <p>€ {(this.state.price * 0.01).toFixed(2)}</p>
-            <p>{this.state.size}</p>
-            <p>Colour(s): {this.state.colour}</p>
-          </div>
-          <div>
-            {/* <button onClick={(e) => this.handleChangeIncrement(e)}>-</button>
+        <div className="App-content">
+          <div className="product-details">
+            <div>
+              <img
+                src={this.state.image}
+                alt="product"
+                style={{ width: "300px", height: "400px" }}
+              ></img>
+            </div>
+            <div className="product-name-no">
+              <h3>{this.state.name}</h3>
+              <p>{this.state.itemNo}</p>
+            </div>
+            <div className="product-main-btn">
+              <div>
+                <p>€ {(this.state.price * 0.01).toFixed(2)}</p>
+                <p>{this.state.size}</p>
+                <p>Colour(s): {this.state.colour}</p>
+              </div>
+              <div className="btn-add-to-cart-div">
+                {/* <button onClick={(e) => this.handleChangeIncrement(e)}>-</button>
             <button onClick={(e) => this.handleChangeDecrement(e)}>+</button>
             <h1>{this.state.numberOfProducts}</h1> */}
-            <button onClick={() => this.saveDataToLocalStorage()}>
-              <p>ADD TO CART(add to local storage)</p>
-            </button>
+                <button
+                  className="btn"
+                  onClick={() => this.saveDataToLocalStorage()}
+                >
+                  <p>ADD TO CART</p>
+                </button>
+              </div>
+            </div>
+            <div className="Stroke">
+              <h5>Product Information</h5>
+            </div>
+            <div>
+              <p>Origin: {this.state.origin}</p>
+              <p>Brand: {this.state.brand}</p>
+              <p>Material: {this.state.material}</p>
+              <p>Suitable for: {this.state.suitable}</p>
+            </div>
+            <div>
+              {this.props.user && this.props.user.userType === "admin" && (
+                <Link to={`edit/${this.state.id}`}>EDIT</Link>
+              )}
+            </div>
+            <div>
+              {this.props.user && this.props.user.userType === "admin" && (
+                <button onClick={() => this.handleDelete(this.state.id)}>
+                  <p>DELETE</p>
+                </button>
+              )}
+            </div>
           </div>
-        </div>
-        <div>
-          <h4>Product Information</h4>
-          <p>Origin: {this.state.origin}</p>
-          <p>Brand: {this.state.brand}</p>
-          <p>Material: {this.state.material}</p>
-          <p>Suitable for: {this.state.suitable}</p>
-        </div>
-        <div>
-          {this.props.user && this.props.user.userType === "admin" && (
-            <Link to={`edit/${this.state.id}`}>EDIT</Link>
-          )}
-        </div>
-        <div>
-          {this.props.user && this.props.user.userType === "admin" && (
-            <button onClick={() => this.handleDelete(this.state.id)}>
-              <p>DELETE</p>
-            </button>
-          )}
         </div>
       </div>
     );

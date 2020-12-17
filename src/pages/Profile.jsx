@@ -35,13 +35,23 @@ export default class ProfilePage extends Component {
           <button onClick={this.props.handleLogout}>Logout</button>
         </div>
         <div>
+          {this.state.receipts && (
+            <div>
+              <h2>MY ORDERS</h2>
+              {this.state.receipts.map((el, i) => (
+                <Receipt key={el._id} {...el} />
+              ))}
+            </div>
+          )}
+        </div>
+        {/* <div>
           <h2>MY ORDERS</h2>
         </div>
         <div>
           {this.state.receipts.map((el, i) => (
             <Receipt key={el._id} {...el} />
           ))}
-        </div>
+        </div> */}
         <div>
           <h2>MY DETAILS</h2>
           <p>E-MAIL {email}</p>

@@ -1,0 +1,22 @@
+.Single-Product {
+  width: 38%;
+  float: left;
+  padding: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 250px;
+}
+
+.Single-Product h3 {
+  color: #1b1b1b;
+  font-size: 12px;
+  background-color: white;
+  margin: 3px 5px;
+}
+
+.Single-Product p {
+  color: #1b1b1b;
+  font-size: 13px;
+  margin: 3px 5px;
+}

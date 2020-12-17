@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Product.css";
 
 const Product = (props) => {
   //console.log("props each filtered Products:", props);
   return (
-    <div>
+    <div className="Single-Product">
       <Link
         to={`/product/${props._id}`}
         style={{ color: "black", textDecoration: "none" }}
@@ -17,8 +18,8 @@ const Product = (props) => {
             height: "200px",
           }}
         />
-        <h5>{props.name}</h5>
-        <div>€{(props.price * 0.01).toFixed(2)}</div>
+        <h3>{props.name}</h3>
+        <p>€{(props.price * 0.01).toFixed(2)}</p>
       </Link>
     </div>
   );

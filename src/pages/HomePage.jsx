@@ -2,29 +2,29 @@ import relabelHeader from "../relabelHeader.png";
 import React from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
+import "./HomePage.css";
 
 function HomePage() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>RE.LABEL</h2>
+        <h1>RE.LABEL</h1>
         <img
           src={relabelHeader}
-          className="App-logo"
+          className="Header-img"
           alt="girl with labeled yellow hoodie"
         />
-        <h1>RE.FURBED CLOTHES</h1>
-        <p>
+        <h2>RE.FURBED CLOTHES</h2>
+        <h5>
           Buy refurbed clothes,
           <br />
           relieve the environment,
           <br />
           change children lives
-        </p>
+        </h5>
       </header>
-      <section>
-        <div className="App-content">
-          <h3>01.</h3>
+      <section className="Refurbed-div">
+        <div>
           <h3>RE.FURBED CLOTHES</h3>
           <p>
             We collect second hand clothes and clothes from overproduction, and
@@ -33,12 +33,12 @@ function HomePage() {
           </p>
           <div>
             <Link to="/shop">
-              <button>
+              <button className="btn">
                 <p>FIND</p>
               </button>
             </Link>
             <Link to="/donate">
-              <button>
+              <button className="btn">
                 <p>DONATE</p>
               </button>
             </Link>

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Product from "../components/Product/Product";
 import { getAllProducts } from "../services/products";
+import "../App.css";
+import "./Shop.css";
 
 export default class Shop extends Component {
   state = {
@@ -56,35 +58,41 @@ export default class Shop extends Component {
 
     return (
       <div>
-        <div>
-          <h1>SHOP</h1>
+        <div className="App-Inner-Header">
+          <h2>SHOP</h2>
         </div>
-        <div>
-          <label htmlFor="search">Search</label>
-          <input
-            id="search"
-            style={{ width: "50%" }}
-            name="search"
-            value={this.state.search}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div>
-          <select name="sort" onChange={this.handleChange}>
-            <option value="Latest">Latest</option>
-            <option value="Price ↑">Price ↑</option>
-            <option value="Price ↓">Price ↓</option>
-          </select>
-        </div>
-        <div>
-          {this.props.user && this.props.user.userType === "admin" && (
-            <Link to="/new-product">Add new product</Link>
-          )}
-        </div>
-        <div>
-          {filteredAndSortedProducts.map((el, i) => (
-            <Product key={el._id} {...el} />
-          ))}
+        <div className="App-content">
+          <div className="Search-Sort">
+            <div className="Search">
+              <label htmlFor="search">Search</label>
+              <input
+                id="search"
+                style={{ width: "50%" }}
+                name="search"
+                value={this.state.search}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="Sort">
+              <select name="sort" onChange={this.handleChange}>
+                <option className="option" value="Latest">
+                  Latest
+                </option>
+                <option value="Price ↑">Price ↑</option>
+                <option value="Price ↓">Price ↓</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            {this.props.user && this.props.user.userType === "admin" && (
+              <Link to="/new-product">Add new product</Link>
+            )}
+          </div>
+          <div className="Products">
+            {filteredAndSortedProducts.map((el, i) => (
+              <Product key={el._id} {...el} />
+            ))}
+          </div>
         </div>
       </div>
     );

@@ -1,0 +1,32 @@
+.Search-Sort {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 350px;
+  margin: 0px 30px;
+}
+
+.Search {
+  padding: 0;
+  margin: 0;
+}
+
+.Sort {
+  margin: 0 30px 5px 0;
+  font-weight: 700;
+}
+
+.Sort select {
+  background-color: white;
+  border: none;
+  font-weight: 700;
+}
+
+.Products {
+  width: 350px;
+  padding: 0px 0px 50px 0px;
+  background-color: white;
+  margin: 0px 30px;
+}
