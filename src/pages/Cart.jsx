@@ -34,6 +34,20 @@ export default class Cart extends Component {
 
   render() {
     //console.log("PRODUCTS IN STATE", this.state.products);
+    if (!this.state.products) {
+      return (
+        <div>
+          <div>
+            <p>Your Shopping Cart is empty.</p>
+          </div>
+          <Link to="/shop">
+            <button>
+              <p>GO SHOPPING</p>
+            </button>
+          </Link>
+        </div>
+      );
+    }
     return (
       <div>
         <div>
