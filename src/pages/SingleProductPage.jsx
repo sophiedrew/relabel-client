@@ -152,14 +152,21 @@ export default class SingleProductPage extends Component {
               <p>Material: {this.state.material}</p>
               <p>Suitable for: {this.state.suitable}</p>
             </div>
-            <div className="btn-admin">
+            <div>
               {this.props.user && this.props.user.userType === "admin" && (
-                <Link to={`edit/${this.state.id}`}>EDIT</Link>
+                <Link to={`edit/${this.state.id}`}>
+                  <button className="btn-admin">
+                    <p>EDIT</p>
+                  </button>
+                </Link>
               )}
             </div>
-            <div className="btn-admin">
+            <div>
               {this.props.user && this.props.user.userType === "admin" && (
-                <button onClick={() => this.handleDelete(this.state.id)}>
+                <button
+                  className="btn-admin"
+                  onClick={() => this.handleDelete(this.state.id)}
+                >
                   <p>DELETE</p>
                 </button>
               )}

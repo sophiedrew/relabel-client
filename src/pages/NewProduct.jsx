@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { addNewProduct } from "../services/products";
+import "../App.css";
 
 export default class NewProduct extends Component {
   state = {
@@ -58,8 +59,8 @@ export default class NewProduct extends Component {
   render() {
     return (
       <>
-        <div>
-          <h1>Create a new Product</h1>
+        <div className="App-Inner-Header">
+          <h2>Create a new Product</h2>
         </div>
         <div>
           <form onSubmit={this.handleSubmit}>
@@ -171,7 +172,9 @@ export default class NewProduct extends Component {
               placeholder="suitable for"
             />
 
-            <button type="submit">Create new product</button>
+            <button className="btn" type="submit">
+              CREATE
+            </button>
           </form>
         </div>
       </>

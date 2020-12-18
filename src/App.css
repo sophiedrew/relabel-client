@@ -2,7 +2,7 @@
   text-align: center;
   width: 400px;
   margin: 0;
-  background-color: red;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,7 +68,7 @@
   background-color: #f34949;
   border: none;
   margin: 10px 10px 10px 0;
-  width: 100px;
+  width: 150px;
   text-align: center;
   padding: 0;
 }
@@ -114,4 +114,9 @@ td {
 
 .text-boxes {
   margin: 30px;
+}
+
+form {
+  margin-top: 30px;
+  margin-bottom: 70px;
 }

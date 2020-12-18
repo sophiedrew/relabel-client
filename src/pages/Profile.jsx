@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { getUser } from "../services/profile";
 import { Link } from "react-router-dom";
 import Receipt from "../components/Receipt/Receipt";
+import "../App.css";
+import "./Profile.css";
 
 export default class ProfilePage extends Component {
   state = {
@@ -30,48 +32,42 @@ export default class ProfilePage extends Component {
     } = this.props.user;
     return (
       <div>
-        <div>
-          <h1>PROFILE</h1>
+        <div className="App-Inner-Header-Logout">
+          <h2>PROFILE</h2>
           <button onClick={this.props.handleLogout}>Logout</button>
         </div>
-        <div>
-          {this.state.receipts && (
-            <div>
-              <h2>MY ORDERS</h2>
-              {this.state.receipts.map((el, i) => (
-                <Receipt key={el._id} {...el} />
-              ))}
-            </div>
-          )}
-        </div>
-        {/* <div>
-          <h2>MY ORDERS</h2>
-        </div>
-        <div>
-          {this.state.receipts.map((el, i) => (
-            <Receipt key={el._id} {...el} />
-          ))}
-        </div> */}
-        <div>
-          <h2>MY DETAILS</h2>
-          <p>E-MAIL {email}</p>
-          <p>
-            NAME {firstName} {lastName}
-          </p>
-          <p>
-            ADRESS {street} {houseNo}, {postalCode} {city}
-          </p>
-          {/* <p>
+        <div className="App-content">
+          <div className="my-orders">
+            {this.state.receipts && (
+              <div>
+                <h3>MY ORDERS</h3>
+                {this.state.receipts.map((el, i) => (
+                  <Receipt key={el._id} {...el} />
+                ))}
+              </div>
+            )}
+          </div>
+          <div className="my-details">
+            <h3>MY DETAILS</h3>
+            <p>E-Mail: {email}</p>
+            <p>
+              {firstName} {lastName} <br />
+              {street} {houseNo}
+              <br />
+              {postalCode} {city}
+            </p>
+            {/* <p>
             CREDIT CARD DETAILS {creditCardNo} {creditCardExpMonth} /
             {creditCardExpYear} {creditCardCVC}
           </p> */}
-        </div>
-        <div>
-          <Link to={`update/${_id}`}>
-            <button>
-              <p>UPDATE PROFILE</p>
-            </button>
-          </Link>
+          </div>
+          <div className="update-div-btn">
+            <Link to={`update/${_id}`}>
+              <button className="btn-update">
+                <p>UPDATE PROFILE</p>
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     );

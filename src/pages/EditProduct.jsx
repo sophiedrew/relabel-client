@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getSingleProduct, updateSingleProduct } from "../services/products";
+import "../App.css";
 
 export default class EditProduct extends Component {
   state = {
@@ -83,7 +84,9 @@ export default class EditProduct extends Component {
     }
     return (
       <div>
-        <div>TEST</div>
+        <div>
+          <h2>EDIT PRODUCT</h2>
+        </div>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"

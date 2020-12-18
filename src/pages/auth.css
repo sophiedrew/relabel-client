@@ -9,5 +9,5 @@ form.auth__form {
 
 button.button__submit {
   max-width: 100px;
-  margin: 1em auto;
+  margin: 1em auto 60px;
 }

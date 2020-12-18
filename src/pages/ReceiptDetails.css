@@ -1,0 +1,37 @@
+.receipt-details {
+  width: 300px;
+}
+
+.product-price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-total {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.order-total h3 {
+  text-align: left;
+  margin: 15px 0 0 0;
+}
+
+.tax p {
+  text-align: right;
+  margin-bottom: 50px;
+}
+
+.single-product {
+  border-style: solid;
+  border-color: #8b8a8a;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-width: thin;
+}

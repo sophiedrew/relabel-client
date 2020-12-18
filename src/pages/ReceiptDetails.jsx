@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { getUser } from "../services/profile";
 import { Link } from "react-router-dom";
+import "../App.css";
+import "./ReceiptDetails.css";
 export default class ReceiptDetails extends Component {
   state = {
     createdAt: "",
@@ -28,37 +30,46 @@ export default class ReceiptDetails extends Component {
     }, 0);
     return (
       <div>
-        <h1>ORDER {this.state.createdAt.slice(0, 10)}</h1>
-        <div>
-          {this.state.products.map((el, i) => (
-            <div key={el._id}>
-              <div>
-                <p>Product</p>
-                <Link
-                  to={`/product/${el.id}`}
-                  style={{ color: "black", textDecoration: "none" }}
-                >
-                  <p>{el.name}</p>
-                </Link>
+        <div className="App-Inner-Header">
+          <h2>ORDER {this.state.createdAt.slice(0, 10)}</h2>
+        </div>
+        <div className="App-content">
+          <div className="order-total">
+            <h3>PRODUCTS</h3>
+          </div>
+          <div className="receipt-details">
+            {this.state.products.map((el, i) => (
+              <div className="single-product" key={el._id}>
+                <div className="product-price">
+                  <p>Product</p>
+                  <Link
+                    to={`/product/${el.id}`}
+                    style={{ color: "black", textDecoration: "none" }}
+                  >
+                    <p>{el.name}</p>
+                  </Link>
+                </div>
+                <div className="product-price">
+                  <p>Price</p>
+                  <p>€ {(el.price * 0.01).toFixed(2)}</p>
+                </div>
               </div>
-              <div>
-                <p>Price</p>
-                <p>€ {(el.price * 0.01).toFixed(2)}</p>
-              </div>
+            ))}
+            <div className="order-total">
+              <h3>ORDER TOTAL</h3>
             </div>
-          ))}
-          <div>
-            <h2>ORDER TOTAL</h2>
+            <div className="product-price">
+              <p>Total: </p>
+              <p>€ {(totalPrice * 0.01).toFixed(2)}</p>
+            </div>
+            <div className="product-price">
+              <p>Shipping: </p>
+              <p>free</p>
+            </div>
+            <div className="tax">
+              <p>incl. 16% tax</p>
+            </div>
           </div>
-          <div>
-            <p>Total: </p>
-            <p>€ {(totalPrice * 0.01).toFixed(2)}</p>
-          </div>
-          <div>
-            <p>Shipping: </p>
-            <p>free</p>
-          </div>
-          <div>incl. 16% tax</div>
         </div>
       </div>
     );

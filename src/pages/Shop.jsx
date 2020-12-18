@@ -85,7 +85,9 @@ export default class Shop extends Component {
           </div>
           <div>
             {this.props.user && this.props.user.userType === "admin" && (
-              <Link to="/new-product">Add new product</Link>
+              <Link to="/new-product">
+                <button className="btn-admin">Add new product</button>
+              </Link>
             )}
           </div>
           <div className="Products">
