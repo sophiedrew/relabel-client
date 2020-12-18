@@ -101,6 +101,14 @@ export default class Checkout extends Component {
               <p>free</p>
             </div>
 
+            <div className="shipping">
+              <p>Donation by us</p>
+              <p>
+                already included €{" "}
+                {(this.totalPrice(this.state.products) * 0.01 * 0.1).toFixed(2)}
+              </p>
+            </div>
+
             <div className="order-total">
               <h5>Total</h5>
               <h5>

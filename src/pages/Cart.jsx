@@ -29,8 +29,8 @@ export default class Cart extends Component {
     return localStorage.setItem(
       "products",
       JSON.stringify(updatedProducts),
-      /* this.props.history.push("/cart") */
-      window.location.reload()
+      this.props.history.push("/shop")
+      //window.location.reload()
     );
   };
 
@@ -43,7 +43,7 @@ export default class Cart extends Component {
             <p>Your Shopping Cart is empty.</p>
           </div>
           <Link to="/shop">
-            <button>
+            <button className="btn">
               <p>GO SHOPPING</p>
             </button>
           </Link>

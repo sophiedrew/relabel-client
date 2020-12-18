@@ -1,4 +1,4 @@
-import relabelHeader from "../relabelHeader.png";
+import relabelHeader from "../relabelHeader.jpg";
 import React from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
