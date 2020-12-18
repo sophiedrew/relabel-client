@@ -12,7 +12,7 @@
 .App-Inner-Header {
   background-color: white;
   height: 8vh;
-  width: 400px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
